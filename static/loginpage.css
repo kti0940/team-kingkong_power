@@ -1,0 +1,123 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    height : 80vh;
+    /*background: yellow;*/
+    justify-content: center;
+    align-items: center;
+}
+
+.main-box{
+            width: 350px;
+            height: 396px;
+            /*background-color: green;*/
+            margin: auto;
+
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+
+            border: 1px solid #E5E7E9;
+
+        }
+.signup-box {
+    width: 350px;
+    height: 63px;
+
+    margin: 10px auto auto auto;
+
+    border: 1px solid #E5E7E9;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.instagram_logo{
+    margin: 35px;
+}
+.password_forgot{
+    color: #2471A3;
+    font-size: 13px;
+
+    align-self: center;
+    margin-top: 15px;
+}
+.password_forgot:hover {
+    cursor: pointer;
+}
+.signup {
+    color: #2E86C1;
+    font-size: 15px;
+}
+.signup:hover{
+    cursor: pointer;
+}
+.app_download {
+    width: 350px;
+    height: 102px;
+
+    margin: 10px auto auto auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.text_down{
+    margin: 13px auto auto auto;
+    font-size: 14px;
+}
+.app_image{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.privacy{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 0 20px 0;
+}
+
+#btn_login{
+    width: 268px;
+    height: 30px;
+    margin: 13px auto;
+    background-color: #0095f6;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+.id_value {
+    width: 258px;
+    height: 36px;
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    color: 8e8e8e;
+}
+
+.password_value {
+    width: 258px;
+    height: 36px;
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    color: 8e8e8e;
+}
+
+.photo_slide {
+    width: 468px;
+    height: 634px;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
