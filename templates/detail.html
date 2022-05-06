@@ -21,215 +21,16 @@
     <!-- 아이콘 추가 -->
     <script src="https://kit.fontawesome.com/f051361119.js" crossorigin="anonymous"></script>
     <title>Instagram</title>
-    <style>
-        @media all and (max-width: 1000px) {
-            .desktop {
-                display: none;
-            }
-        }
+    <link href="static/detail.css" rel="stylesheet">
 
-        /*색상설정*/
-        :root {
-            --white: #ffffff;
-            --beige: #efefef;
-            --palegray: #fafafa;
-            --gray: #8e8e8e;
-            --darkgray: #262626;
-            --blue: #0095f6;
-            --black: #262626;
-        }
 
-        /*body 전체 적용*/
-        body {
-            background-color: var(--palegray);
-        }
 
-        /*상단 고정 네비게이션바*/
-        .navbar {
-            background-color: var(--white);
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            height: 85px;
-            width: 100%;
-            z-index: 99;
-        }
-
-        /*상단 입력창 전체 정렬*/
-        .up_input {
-            /*돋보기 아이콘 가운데정렬*/
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            padding: 10px;
-            background-color: var(--palegray);
-            border-radius: 15px;
-            width: 100%;
-            border-radius: 16px;
-        }
-
-        /*상단 입력창 (돋보기+입력창)설정*/
-        input.nosubmit {
-            /*내부 여백*/
-            width: 100%;
-            padding: 0px 20px 0px 10px;
-            /*얘가투명*/
-            outline: none;
-            background: transparent;
-        }
-
-        /*상단 입력창 (입력창)설정*/
-        input[type='search'] {
-            border: none;
-            background: transparent;
-            font-size: 18px;
-        }
-
-        /*상단 입력시 글씨색*/
-        input[type='search']::placeholder {
-            color: var(--gray);
-        }
-
-        /*돋보기 아이콘 정렬*/
-        .icon {
-            margin-left: 10px;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /*우측 아이콘바 정렬*/
-        .icon-bar {
-            cursor: pointer;
-            overflow: hidden;
-            height: 53px;
-            width: 36%;
-            float: right;
-            margin-right: 100px;
-        }
-
-        /*아이콘바 여백 상세설정*/
-        .icon-bar a {
-            float: right;
-            width: 38px;
-            text-align: right;
-            /*각각의 아이콘 내부 여백*/
-            padding: 15px 0px 0px 0px;
-            color: var(--black);
-        }
-
-        /*body전체 nav바만큼 위에서 띄우기*/
-        .main-body {
-            margin-top: 85px;
-        }
-
-        /*프로필이미지채우기*/
-        .profile-img {
-            width: 100%;
-            height: 100%;
-
-        }
-
-        /*프로필이미지들어갈 원형박스*/
-        .profile-box {
-            width: 150px;
-            height: 150px;
-            border-radius: 70%;
-            overflow: hidden;
-            margin-left: 30px;
-            cursor: pointer;
-        }
-
-        /*프로필 윗부분 전체*/
-        .profile-bar {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            justify-content: space-between;
-
-            margin-top: 110px;
-        }
-
-        /*글씨속성지정-id*/
-        .myid {
-            color: var(--black);
-            font-size: 28px;
-            font-weight: lighter;
-        }
-
-        /*프로필영역 위에 오른쪽부분*/
-        .right {
-            padding-right: 250px;
-        }
-
-        .feed-box {
-            width: 850px;
-            margin: auto;
-        }
-
-        .myprofile_edit_button {
-            width: 120px;
-            border-radius: 9px;
-            border-color: var(--palegray);
-            background-color: transparent;
-        }
-
-        .feed-name {
-            margin-bottom: 30px;
-        }
-
-        .feed {
-            width: 1000px;
-            margin: auto;
-        }
-
-        .hidemobile {
-            margin-bottom: 30px;
-        }
-
-        .table {
-            margin-top: 50px;
-        }
-
-        .table-box {
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            margin: 0px 200px 0px 140px;
-
-        }
-
-        .grid-container {
-            max-width: 1000px;
-            display: grid;
-            column-gap: 70px;
-            row-gap: 20px;
-            grid-template-columns: 250px 250px 250px;
-            padding: 10px;
-        }
-
-        .page-footer {
-            margin: 100px auto 30px auto;
-            text-align: center;
-            color: #8e8e8e;
-        }
-
-        .main-body {
-            width: 100%;
-            max-width: 100%;
-            display: flex;
-            flex-direction: column;
-            margin: auto;
-        }
-
-    </style>
 </head>
 <body>
 <!-- 네비게이션 바 -->
 <div class="navbar">
     <!-- 로고 -->
-    <a href="#"><img class="img_margin" src="../static/instagram.png"/></a>
+    <a href="/main"><img class="img_margin" src="static/images/instagramlogo.png"/></a>
 
     <!-- 검색창 -->
     <div class="desktop">
@@ -269,10 +70,65 @@
                         ㅤㅤ
                         <i class="fa-solid fa-cog" style="cursor: pointer"></i>
                     </div>
-                    <div class="hidemobile">
-                        <span>게시물 <b>4</b></span>ㅤㅤ
-                        <a href="#about" class="myid_1" style="color: black">팔로워 <b>5</b></a>ㅤㅤ
-                        <a href="#about" class="myid_1" style="color: black">팔로우 <b>7</b></a>
+                    <div class="hidemobile" style="display: flex; flex-direction: row">
+                        <span>게시물 <b>{post_count}</b>개</span>
+
+                        <!-- 팔로우/팔로잉 아이콘들 -->
+                        <div class="followers">
+                            <button type="button"
+                                    style="margin: auto; color: black; height: 30px; background-color: transparent; border: 0px;"
+                                    class="btn btn-primary" data-toggle="modal"
+                                    data-target="#followersModal">
+                                <span style="display: flex; flex-direction: row; color: black">팔로워 <b>{follower_count}</b>명</span>
+                            </button>
+                        </div>
+                        <div class="modal fade" id="followersModal" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog" style="background-color: whitesmoke" role="document">
+                                <div class="modal-body" style="padding: 30px;">
+                                    <div class="feed_name" style="justify-content: space-between">
+                                        <div class="profile_box">
+                                            <img class="profile_img"
+                                                 src="https://i.pinimg.com/736x/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg">
+                                        </div>
+                                        <div class="name_content">
+                                            <a><span class="feed_name_txt"> tagname </span></a>
+                                            <span class="name_content_txt"> user_name</span>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-sm">Follow</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="following">
+                            <button type="button"
+                                    style="margin: auto; color: black; height: 30px; background-color: transparent; border: 0px;"
+                                    class="btn btn-primary" data-toggle="modal"
+                                    data-target="#followingModal">
+                                <span style="display: flex; flex-direction: row; color: black">팔로잉 <b>{following_count}</b>명</span>
+                            </button>
+                        </div>
+                        <div class="modal fade" id="followingModal" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog" style="background-color: whitesmoke" role="document">
+                                <div class="modal-body" style="padding: 30px;">
+                                    <div class="feed_name" style="justify-content: space-between">
+                                        <div class="profile_box">
+                                            <img class="profile_img"
+                                                 src="https://i.pinimg.com/736x/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg">
+                                        </div>
+                                        <div class="name_content">
+                                            <span class="feed_name_txt"> tagname </span>
+                                            <span class="name_content_txt"> user_name</span>
+                                        </div>
+                                        <button type="button" class="btn btn-light">Following</button> </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -291,24 +147,35 @@
             </div>
             <!--        게시물 저장됨 태그됨 끝-->
             <!--            사진정렬-->
-            <div class="grid-container">
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
+            <div class="container">
+                <div class="images">
+                    <div class="imageFlex1">
+                        <img src="static/images/sample_image_1.png">
+                        <img src="static/images/sample_image_1.png">
+                        <img src="static/images/sample_image_1.png">
+                        <img src="static/images/sample_image_1.png">
+                        <img src="static/images/sample_image_1.png">
+
+                    </div>
                 </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
+                <div class="images">
+                    <div class="imageFlex2">
+                        <img src="static/images/sample_image_1.png">
+                        <img src="static/images/sample_image_1.png">
+                        <img src="static/images/sample_image_1.png">
+                        <img src="static/images/sample_image_1.png">
+                        <img src="static/images/sample_image_1.png">
+
+                    </div>
                 </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
-                </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
-                </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
-                </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
-                </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
-                </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
-                </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
+                <div class="images">
+                    <div class="imageFlex3">
+                        <img src="static/images/sample_image_1.png">
+                        <img src="static/images/sample_image_1.png">
+                        <img src="static/images/sample_image_1.png">
+                        <img src="static/images/sample_image_1.png">
+                        <img src="static/images/sample_image_1.png">
+                    </div>
                 </div>
             </div>
             <!--            사진정렬 끝-->
