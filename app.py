@@ -153,6 +153,46 @@ def save_img():
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
 
+@app.route('/mainpage')
+def main():
+    return render_template('mainpage.html')
+
+@app.route('/detailpage')
+def detail():
+    return render_template('detailpage.html')
+
+@app.route('/content', methods=['POST'])
+def posting():
+
+    content_txt_receive = request.form["content_txt_give"]
+
+    content_photo = request.files["content_photo_give"]
+
+    extension = content_photo.filename.split('.')[-1]
+
+    today = datetime.now()
+    mytime = today.strftime('%Y-%m-%d-%H-%M-%S')
+
+    filename = f'content_photo-{mytime}'
+
+    save_to = f'static/{filename}.{extension}'
+    content_photo.save(save_to)
+
+    doc = {
+        'content_txt': content_txt_receive,
+        'content_photo': f'{filename}.{extension}',
+    }
+    db.content.insert_one(doc)
+
+    return jsonify({'msg': '업로드 완료!'})
+
+
+@app.route('/listing', methods=['GET'])
+def listing():
+    contents = list(db.content.find({}, {'_id': False}))
+    return jsonify({'contents': contents})
+
+
 
 if __name__ == '__mainpage__':
     app.run('0.0.0.0', port=5000, debug=True)
