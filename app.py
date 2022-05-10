@@ -8,15 +8,16 @@ from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
 
 
-
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 app.config['UPLOAD_FOLDER'] = "./static/profile_pics"
 
 SECRET_KEY = 'KINGKONG'
 
-client = MongoClient('mongodb+srv://test:sparta@cluster0.sca5z.mongodb.net/Cluster0?retryWrites=true&w=majority')
+client = MongoClient(
+    'mongodb+srv://test:sparta@cluster0.sca5z.mongodb.net/Cluster0?retryWrites=true&w=majority')
 db = client.Kinkong
+
 
 @app.route('/')
 def home():
@@ -25,7 +26,7 @@ def home():
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.users.find_one({"id": payload["id"]})
         if user_info:
-             return render_template('main.html', user_info=user_info)
+            return render_template('mainpage.html', user_info=user_info)
         else:
             print('에러')
     except jwt.ExpiredSignatureError:
@@ -33,12 +34,15 @@ def home():
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
+
 @app.route('/login')
 def login():
     msg = request.args.get("msg")
-    return render_template('login.html', msg=msg)
+    return render_template('loginpage.html', msg=msg)
 
 # 회원가입 기능
+
+
 @app.route('/sign_up/save', methods=['POST'])
 def sign_up():
     id_receive = request.form['id_give']
@@ -60,6 +64,8 @@ def sign_up():
     return jsonify({'result': 'success'})
 
 # id 중복확인
+
+
 @app.route('/sign_up/check_id', methods=['POST'])
 def check_id():
     id_receive = request.form['id_give']
@@ -68,6 +74,8 @@ def check_id():
     return jsonify({'result': 'success', 'exists': exists})
 
 # username 중복확인
+
+
 @app.route('/sign_up/check_username', methods=['POST'])
 def check_username():
     username_receive = request.form['username_give']
@@ -76,6 +84,8 @@ def check_username():
     return jsonify({'result': 'success', 'exists': exists})
 
 # 로그인기능
+
+
 @app.route('/sign_in', methods=['POST'])
 def sign_in():
     id_receive = request.form['id_give']
@@ -100,17 +110,20 @@ def sign_in():
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
 
 # 각 사용자의 프로필과 글을 모아볼 수 있는 공간
+
+
 @app.route('/user/<username>')
 def user(username):
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        my_info = db.users.find_one({"id": payload['id']}, {"_id": False}) # 로그인한 아이디가 db의 'id'이랑 같은게 있나
+        # 로그인한 아이디가 db의 'id'이랑 같은게 있나
+        my_info = db.users.find_one({"id": payload['id']}, {"_id": False})
 
-        status = (username == my_info['username'])  # 내 프로필이면 True, 다른 사람 프로필 페이지면 False  / 자신의 유저네임 동일한지
+        # 내 프로필이면 True, 다른 사람 프로필 페이지면 False  / 자신의 유저네임 동일한지
+        status = (username == my_info['username'])
 
         user_info = db.users.find_one({"username": username}, {"_id": False})
-
 
         return render_template('detail.html', user_info=user_info, status=status)
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
@@ -134,13 +147,12 @@ def save_img():
             file.save("./static/"+file_path)
             new_doc["profile_pic"] = filename
             new_doc["profile_pic_real"] = file_path
-        db.users.update_one({'username': payload['id']}, {'$set':new_doc})
+        db.users.update_one({'username': payload['id']}, {'$set': new_doc})
 
         return jsonify({"result": "success", 'msg': '프로필을 업데이트했습니다.'})
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
 
-if __name__ == '__main__':
+
+if __name__ == '__mainpage__':
     app.run('0.0.0.0', port=5000, debug=True)
-
-
